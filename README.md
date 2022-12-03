@@ -2,7 +2,7 @@
 
 ### https://adventofcode.com/2022
 
-### Implemented in Rust (_I'm a Rust beginner_).
+#### Implemented in Rust (_I'm a Rust beginner_).
 
 ```
          |
@@ -22,3 +22,5 @@ i/ *   O   O   * \i
 /=================\
        |___|
 ```
+
+##### Used a Rust template from https://github.com/smores56/aoc-2022.
