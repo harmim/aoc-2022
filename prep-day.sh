@@ -47,7 +47,7 @@ else
   echo "  - Add 'use day$1::Day$1;'."
   echo "  - Update 'get_day_solution' to use 'Day$1'."
   cat <<-EOF > "$SRC_DIR/day$1.rs"
-use crate::{FromInput, DaySolution};
+use crate::{DaySolution, FromInput};
 
 pub struct Day$1;
 

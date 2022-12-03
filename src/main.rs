@@ -43,7 +43,7 @@ fn get_day_solution(day: usize, lines: impl Iterator<Item = String>) -> Box<dyn 
     match day {
         1 => Box::new(Day1::from_lines(lines)),
         2 => Box::new(Day2::from_lines(lines)),
-        _ => panic!("Day has not been solved yet."),
+        _ => panic!("Day has not been solved yet, or it is invalid."),
     }
 }
 

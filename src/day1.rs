@@ -38,7 +38,7 @@ impl DaySolution for Day1 {
             .max()
         {
             Some(sum) => sum,
-            _ => 0,
+            _ => panic!("There should be at least one Elf."),
         }
         .to_string()
     }
