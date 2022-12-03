@@ -1,4 +1,4 @@
-use crate::{FromInput, DaySolution};
+use crate::{DaySolution, FromInput};
 
 pub struct Day1(Vec<Vec<usize>>);
 
@@ -20,10 +20,7 @@ impl FromInput for Day1 {
                 continue;
             }
 
-            single_elf.push(
-                line.parse::<usize>()
-                    .expect("Item on each line should be a number."),
-            )
+            single_elf.push(line.parse::<usize>().ok().unwrap())
         }
 
         update(&mut output, &mut single_elf);
