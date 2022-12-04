@@ -4,9 +4,11 @@ use std::time::{Duration, Instant};
 
 mod day1;
 mod day2;
+mod day3;
 
 use day1::Day1;
 use day2::Day2;
+use day3::Day3;
 
 const INPUT_DIR: &str = "input";
 
@@ -33,7 +35,7 @@ fn load_input(day: usize, test: bool) -> impl Iterator<Item = String> {
 
     buffered_file.lines().map(|line| {
         String::from(
-            line.expect("Failed to read a line from the input file")
+            line.expect("Failed to read a line from the input file.")
                 .trim(),
         )
     })
@@ -43,6 +45,7 @@ fn get_day_solution(day: usize, lines: impl Iterator<Item = String>) -> Box<dyn 
     match day {
         1 => Box::new(Day1::from_lines(lines)),
         2 => Box::new(Day2::from_lines(lines)),
+        3 => Box::new(Day3::from_lines(lines)),
         _ => panic!("Day has not been solved yet, or it is invalid."),
     }
 }

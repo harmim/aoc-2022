@@ -44,11 +44,11 @@ impl DaySolution for Day1 {
     }
 
     fn part_two(&self) -> String {
-        let mut sums = self
+        let mut sums: Vec<usize> = self
             .0
             .iter()
             .map(|single_elf| single_elf.iter().sum::<usize>())
-            .collect::<Vec<usize>>();
+            .collect();
         sums.sort();
         sums.reverse();
 

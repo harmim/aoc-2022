@@ -37,7 +37,7 @@ impl DaySolution for Day2 {
                 (opponent, 'Z') => (*opponent, Shape::Scissors),
                 _ => panic!("Invalid shape."),
             })
-            .map(|round| self.get_score(round))
+            .map(get_score)
             .sum::<usize>()
             .to_string()
     }
@@ -55,24 +55,22 @@ impl DaySolution for Day2 {
                 (opponent, 'Y') => (*opponent, *opponent),
                 _ => panic!("Invalid option."),
             })
-            .map(|round| self.get_score(round))
+            .map(get_score)
             .sum::<usize>()
             .to_string()
     }
 }
 
-impl Day2 {
-    fn get_score<'d>(&'d self, round: (Shape, Shape)) -> usize {
-        match round {
-            (Shape::Rock, Shape::Rock) => 1 + 3,
-            (Shape::Rock, Shape::Paper) => 2 + 6,
-            (Shape::Rock, Shape::Scissors) => 3 + 0,
-            (Shape::Paper, Shape::Rock) => 1 + 0,
-            (Shape::Paper, Shape::Paper) => 2 + 3,
-            (Shape::Paper, Shape::Scissors) => 3 + 6,
-            (Shape::Scissors, Shape::Rock) => 1 + 6,
-            (Shape::Scissors, Shape::Paper) => 2 + 0,
-            (Shape::Scissors, Shape::Scissors) => 3 + 3,
-        }
+fn get_score(round: (Shape, Shape)) -> usize {
+    match round {
+        (Shape::Rock, Shape::Rock) => 1 + 3,
+        (Shape::Rock, Shape::Paper) => 2 + 6,
+        (Shape::Rock, Shape::Scissors) => 3 + 0,
+        (Shape::Paper, Shape::Rock) => 1 + 0,
+        (Shape::Paper, Shape::Paper) => 2 + 3,
+        (Shape::Paper, Shape::Scissors) => 3 + 6,
+        (Shape::Scissors, Shape::Rock) => 1 + 6,
+        (Shape::Scissors, Shape::Paper) => 2 + 0,
+        (Shape::Scissors, Shape::Scissors) => 3 + 3,
     }
 }
