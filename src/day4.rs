@@ -8,6 +8,7 @@ impl FromInput for Day4 {
             lines
                 .map(|line| {
                     let ranges = line.split_once(",").unwrap();
+
                     (parse_range(ranges.0), parse_range(ranges.1))
                 })
                 .collect(),
@@ -17,6 +18,7 @@ impl FromInput for Day4 {
 
 fn parse_range(range: &str) -> (usize, usize) {
     let bounds = range.split_once("-").unwrap();
+
     (bounds.0.parse().unwrap(), bounds.1.parse().unwrap())
 }
 

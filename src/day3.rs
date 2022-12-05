@@ -18,6 +18,7 @@ impl DaySolution for Day3 {
                 let mid = bag.len() / 2;
                 let compartment1 = HashSet::<char>::from_iter(bag.iter().take(mid).cloned());
                 let compartment2 = HashSet::from_iter(bag.iter().skip(mid).cloned());
+
                 *compartment1.intersection(&compartment2).next().unwrap()
             })
             .map(type_to_priority)
@@ -32,6 +33,7 @@ impl DaySolution for Day3 {
                 let bag1 = HashSet::<char>::from_iter(group.get(0).unwrap().clone());
                 let bag2 = HashSet::from_iter(group.get(1).unwrap().clone());
                 let bag3 = HashSet::from_iter(group.get(2).unwrap().clone());
+
                 *bag1
                     .intersection(&bag2)
                     .cloned()
@@ -51,6 +53,7 @@ fn type_to_priority(t: char) -> usize {
         t as usize - 'a' as usize + 1
     } else if t.is_ascii_uppercase() {
         const DIFF: usize = 'Z' as usize - 'A' as usize + 1;
+
         t as usize - 'A' as usize + 1 + DIFF
     } else {
         panic!("Invalid type.")

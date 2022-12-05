@@ -4,8 +4,8 @@ pub struct Day1(Vec<Vec<usize>>);
 
 impl FromInput for Day1 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
-        let mut output = Vec::new();
-        let mut single_elf = Vec::new();
+        let mut output = vec![];
+        let mut single_elf = vec![];
 
         fn update(output: &mut Vec<Vec<usize>>, single_elf: &mut Vec<usize>) {
             if !single_elf.is_empty() {
