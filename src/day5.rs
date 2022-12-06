@@ -50,8 +50,8 @@ impl FromInput for Day5 {
                 }
 
                 for (i, s) in stacks.iter_mut().enumerate() {
-                    match stack.get(i).unwrap() {
-                        Some(x) => s.push(*x),
+                    match stack[i] {
+                        Some(x) => s.push(x),
                         _ => (),
                     }
                 }

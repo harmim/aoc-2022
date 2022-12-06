@@ -30,9 +30,9 @@ impl DaySolution for Day3 {
         self.0
             .chunks(3)
             .map(|group| {
-                let bag1 = HashSet::<char>::from_iter(group.get(0).unwrap().clone());
-                let bag2 = HashSet::from_iter(group.get(1).unwrap().clone());
-                let bag3 = HashSet::from_iter(group.get(2).unwrap().clone());
+                let bag1 = HashSet::<char>::from_iter(group[0].clone());
+                let bag2 = HashSet::from_iter(group[1].clone());
+                let bag3 = HashSet::from_iter(group[2].clone());
 
                 *bag1
                     .intersection(&bag2)
