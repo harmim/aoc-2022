@@ -17,7 +17,7 @@ impl FromInput for Day5 {
                     continue;
                 }
 
-                if line.find("[") == None {
+                if line.find('[') == None {
                     continue;
                 }
 
