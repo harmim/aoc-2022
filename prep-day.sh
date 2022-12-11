@@ -8,11 +8,12 @@ INPUT_DIR=input
 SRC_DIR=src
 
 if [ -z "$1" ]; then
-  echo "Must provide a day of the month (not zero-padded) as the first argument."
+  echo "Must provide a day of the month as the first argument."
   exit 1
 fi
 
-if [[ "$1" -lt 1 || "$1" -gt 25 ]]; then
+DAY=$(echo "$1" | bc)
+if [[ $DAY -lt 1 || $DAY -gt 25 ]]; then
   echo "The day must be between 1 and 25, inclusive."
   exit 1
 fi
@@ -29,44 +30,48 @@ if [ -z "$SESSION" ]; then
   exit 1
 fi
 
-if [ -f "$INPUT_DIR/$1.txt" ]; then
-  echo "Input data already exists for day $1, skipping download..."
-else
-  echo "Downloading input data for day $1 to $INPUT_DIR/$1.txt..."
-  mkdir -p "$INPUT_DIR"
-  curl "https://adventofcode.com/$YEAR/day/$1/input" -s -m 10 \
-    -b "session=$SESSION" > "$INPUT_DIR/$1.txt"
+DAY_FILE=$DAY
+if [[ $DAY -ge 1 && $DAY -le 9 ]]; then
+  DAY_FILE="0$DAY"
 fi
 
-if [ -f "$SRC_DIR/day$1.rs" ]; then
-  echo "$SRC_DIR/day$1.rs already exists, skipping..."
+INPUT_FILE="$INPUT_DIR/$DAY_FILE.txt"
+if [ -f "$INPUT_FILE" ]; then
+  echo "Input data already exists for day $DAY, skipping download..."
 else
-  echo "Creating a boilerplate module for day $1 at $SRC_DIR/day$1.rs..."
+  echo "Downloading input data for day $DAY to $INPUT_FILE..."
+  mkdir -p "$INPUT_DIR"
+  curl "https://adventofcode.com/$YEAR/day/$DAY/input" -s -m 10 \
+    -b "session=$SESSION" > "$INPUT_FILE"
+fi
+
+SRC_FILE="$SRC_DIR/day$DAY_FILE.rs"
+if [ -f "$SRC_FILE" ]; then
+  echo "$SRC_FILE already exists, skipping..."
+else
+  echo "Creating a boilerplate module for day $DAY at $SRC_FILE..."
   echo "Remember to update $SRC_DIR/main.rs:"
-  echo "  - Add 'mod day$1;'."
-  echo "  - Add 'use day$1::Day$1;'."
-  echo "  - Update 'get_day_solution' to use 'Day$1'."
-  cat <<-EOF > "$SRC_DIR/day$1.rs"
+  echo "  - Add 'mod day$DAY_FILE;'."
+  echo "  - Add 'use day$DAY_FILE::Day$DAY_FILE;'."
+  echo "  - Update 'get_day_solution' to use 'Day$DAY_FILE'."
+  cat <<-EOF > "$SRC_FILE"
 use crate::{DaySolution, FromInput};
 
-pub struct Day$1;
+pub struct Day$DAY_FILE;
 
-impl FromInput for Day$1 {
+impl FromInput for Day$DAY_FILE {
     fn from_lines(_lines: impl Iterator<Item = String>) -> Self {
-        // Self
-        todo!("Parse your input from the input file.")
+        Self
     }
 }
 
-impl DaySolution for Day$1 {
+impl DaySolution for Day$DAY_FILE {
     fn part_one(&self) -> String {
-        // String::from("")
-        todo!("Solve part one of day $1 using your parsed input.")
+        String::from("")
     }
 
     fn part_two(&self) -> String {
-        // String::from("")
-        todo!("Solve part two of day $1 using your parsed input.")
+        String::from("")
     }
 }
 EOF

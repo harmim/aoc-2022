@@ -2,25 +2,25 @@ use std::env;
 use std::io::{BufRead, BufReader};
 use std::time::{Duration, Instant};
 
-mod day1;
-mod day2;
-mod day3;
-mod day4;
-mod day5;
-mod day6;
-mod day7;
-mod day8;
-mod day9;
+mod day01;
+mod day02;
+mod day03;
+mod day04;
+mod day05;
+mod day06;
+mod day07;
+mod day08;
+mod day09;
 
-use day1::Day1;
-use day2::Day2;
-use day3::Day3;
-use day4::Day4;
-use day5::Day5;
-use day6::Day6;
-use day7::Day7;
-use day8::Day8;
-use day9::Day9;
+use day01::Day01;
+use day02::Day02;
+use day03::Day03;
+use day04::Day04;
+use day05::Day05;
+use day06::Day06;
+use day07::Day07;
+use day08::Day08;
+use day09::Day09;
 
 const INPUT_DIR: &str = "input";
 
@@ -34,11 +34,16 @@ trait DaySolution {
 }
 
 fn load_input(day: usize, test: bool) -> impl Iterator<Item = String> {
-    let file_name = if test {
-        format!("{day}-test")
+    let mut file_name = if day >= 1 && day <= 9 {
+        format!("0{day}")
     } else {
         day.to_string()
     };
+
+    if test {
+        file_name += "-test";
+    }
+
     let file = std::fs::OpenOptions::new()
         .read(true)
         .open(format!("{INPUT_DIR}/{file_name}.txt"))
@@ -52,15 +57,15 @@ fn load_input(day: usize, test: bool) -> impl Iterator<Item = String> {
 
 fn get_day_solution(day: usize, lines: impl Iterator<Item = String>) -> Box<dyn DaySolution> {
     match day {
-        1 => Box::new(Day1::from_lines(lines)),
-        2 => Box::new(Day2::from_lines(lines)),
-        3 => Box::new(Day3::from_lines(lines)),
-        4 => Box::new(Day4::from_lines(lines)),
-        5 => Box::new(Day5::from_lines(lines)),
-        6 => Box::new(Day6::from_lines(lines)),
-        7 => Box::new(Day7::from_lines(lines)),
-        8 => Box::new(Day8::from_lines(lines)),
-        9 => Box::new(Day9::from_lines(lines)),
+        1 => Box::new(Day01::from_lines(lines)),
+        2 => Box::new(Day02::from_lines(lines)),
+        3 => Box::new(Day03::from_lines(lines)),
+        4 => Box::new(Day04::from_lines(lines)),
+        5 => Box::new(Day05::from_lines(lines)),
+        6 => Box::new(Day06::from_lines(lines)),
+        7 => Box::new(Day07::from_lines(lines)),
+        8 => Box::new(Day08::from_lines(lines)),
+        9 => Box::new(Day09::from_lines(lines)),
         _ => panic!("Day has not been solved yet, or it is invalid."),
     }
 }
@@ -83,6 +88,7 @@ fn main() {
 
     let input = load_input(day, test);
     let solution = get_day_solution(day, input);
+
     println!("Solving day {day}...");
     if test {
         println!("Using a test input file.")

@@ -12,9 +12,9 @@ struct Dir {
     back: RefCell<Weak<Dir>>,
 }
 
-pub struct Day7(Rc<Dir>);
+pub struct Day07(Rc<Dir>);
 
-impl FromInput for Day7 {
+impl FromInput for Day07 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
         let root = Rc::new(Dir {
             files: RefCell::new(HashMap::new()),
@@ -61,7 +61,7 @@ impl FromInput for Day7 {
     }
 }
 
-impl DaySolution for Day7 {
+impl DaySolution for Day07 {
     fn part_one(&self) -> String {
         dir_size(self.0.clone(), 100_000).1.to_string()
     }

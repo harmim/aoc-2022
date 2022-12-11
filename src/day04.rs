@@ -1,8 +1,8 @@
 use crate::{DaySolution, FromInput};
 
-pub struct Day4(Vec<((usize, usize), (usize, usize))>);
+pub struct Day04(Vec<((usize, usize), (usize, usize))>);
 
-impl FromInput for Day4 {
+impl FromInput for Day04 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
         Self(
             lines
@@ -22,7 +22,7 @@ fn parse_range(range: &str) -> (usize, usize) {
     (bounds.0.parse().unwrap(), bounds.1.parse().unwrap())
 }
 
-impl DaySolution for Day4 {
+impl DaySolution for Day04 {
     fn part_one(&self) -> String {
         self.0
             .iter()

@@ -9,9 +9,9 @@ enum Dir {
     Down,
 }
 
-pub struct Day9(Vec<(Dir, usize)>);
+pub struct Day09(Vec<(Dir, usize)>);
 
-impl FromInput for Day9 {
+impl FromInput for Day09 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
         Self(
             lines
@@ -27,7 +27,7 @@ impl FromInput for Day9 {
     }
 }
 
-impl DaySolution for Day9 {
+impl DaySolution for Day09 {
     fn part_one(&self) -> String {
         self.get_visited(2)
     }
@@ -43,7 +43,7 @@ struct Pos {
     y: isize,
 }
 
-impl Day9 {
+impl Day09 {
     fn get_visited<'d>(&'d self, knots_count: usize) -> String {
         let mut visited = HashSet::new();
         let mut knots = vec![Pos { x: 0, y: 0 }; knots_count];

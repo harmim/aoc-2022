@@ -2,15 +2,15 @@ use std::collections::HashSet;
 
 use crate::{DaySolution, FromInput};
 
-pub struct Day3(Vec<Vec<char>>);
+pub struct Day03(Vec<Vec<char>>);
 
-impl FromInput for Day3 {
+impl FromInput for Day03 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
         Self(lines.map(|line| line.chars().collect()).collect())
     }
 }
 
-impl DaySolution for Day3 {
+impl DaySolution for Day03 {
     fn part_one(&self) -> String {
         self.0
             .iter()

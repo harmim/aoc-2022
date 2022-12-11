@@ -2,9 +2,9 @@ use std::cmp;
 
 use crate::{DaySolution, FromInput};
 
-pub struct Day8(Vec<Vec<usize>>);
+pub struct Day08(Vec<Vec<usize>>);
 
-impl FromInput for Day8 {
+impl FromInput for Day08 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
         Self(
             lines
@@ -18,7 +18,7 @@ impl FromInput for Day8 {
     }
 }
 
-impl DaySolution for Day8 {
+impl DaySolution for Day08 {
     fn part_one(&self) -> String {
         let mut grid: Vec<Vec<(isize, isize, isize, isize, isize)>> = self
             .0

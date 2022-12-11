@@ -1,8 +1,8 @@
 use crate::{DaySolution, FromInput};
 
-pub struct Day1(Vec<Vec<usize>>);
+pub struct Day01(Vec<Vec<usize>>);
 
-impl FromInput for Day1 {
+impl FromInput for Day01 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
         let mut output = vec![];
         let mut single_elf = vec![];
@@ -29,7 +29,7 @@ impl FromInput for Day1 {
     }
 }
 
-impl DaySolution for Day1 {
+impl DaySolution for Day01 {
     fn part_one(&self) -> String {
         match self
             .0

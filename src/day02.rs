@@ -7,9 +7,9 @@ enum Shape {
     Scissors,
 }
 
-pub struct Day2(Vec<(Shape, char)>);
+pub struct Day02(Vec<(Shape, char)>);
 
-impl FromInput for Day2 {
+impl FromInput for Day02 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
         Self(
             lines
@@ -27,7 +27,7 @@ impl FromInput for Day2 {
     }
 }
 
-impl DaySolution for Day2 {
+impl DaySolution for Day02 {
     fn part_one(&self) -> String {
         self.0
             .iter()
