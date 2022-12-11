@@ -2,7 +2,7 @@ use std::cmp;
 
 use crate::{DaySolution, FromInput};
 
-pub struct Day8(Vec<Vec<isize>>);
+pub struct Day8(Vec<Vec<usize>>);
 
 impl FromInput for Day8 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
@@ -10,7 +10,7 @@ impl FromInput for Day8 {
             lines
                 .map(|line| {
                     line.chars()
-                        .map(|c| c.to_digit(10).unwrap() as isize)
+                        .map(|c| c.to_digit(10).unwrap() as usize)
                         .collect()
                 })
                 .collect(),
@@ -23,7 +23,7 @@ impl DaySolution for Day8 {
         let mut grid: Vec<Vec<(isize, isize, isize, isize, isize)>> = self
             .0
             .iter()
-            .map(|row| row.iter().map(|&h| (h, -1, -1, -1, -1)).collect())
+            .map(|row| row.iter().map(|&h| (h as isize, -1, -1, -1, -1)).collect())
             .collect();
         let x_size = self.0.len();
         let y_size = self.0[0].len();
@@ -77,7 +77,7 @@ impl DaySolution for Day8 {
     fn part_two(&self) -> String {
         let x_size = self.0.len();
         let y_size = self.0[0].len();
-        let mut all_scores: Vec<isize> = vec![];
+        let mut all_scores: Vec<usize> = vec![];
 
         for x in 0..x_size {
             for y in 0..y_size {

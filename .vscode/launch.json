@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'aoc-2022'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=aoc-2022",
+                    "--package=aoc-2022",
+                ],
+                "filter": {
+                    "name": "aoc-2022",
+                    "kind": "bin",
+                },
+            },
+            "args": ["X", "test"],
+            "cwd": "${workspaceFolder}",
+        },
+    ],
+}
