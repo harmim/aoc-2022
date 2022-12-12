@@ -4,6 +4,12 @@ pub struct Day04(Vec<((usize, usize), (usize, usize))>);
 
 impl FromInput for Day04 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
+        fn parse_range(range: &str) -> (usize, usize) {
+            let bounds = range.split_once('-').unwrap();
+
+            (bounds.0.parse().unwrap(), bounds.1.parse().unwrap())
+        }
+
         Self(
             lines
                 .map(|line| {
@@ -14,12 +20,6 @@ impl FromInput for Day04 {
                 .collect(),
         )
     }
-}
-
-fn parse_range(range: &str) -> (usize, usize) {
-    let bounds = range.split_once('-').unwrap();
-
-    (bounds.0.parse().unwrap(), bounds.1.parse().unwrap())
 }
 
 impl DaySolution for Day04 {
