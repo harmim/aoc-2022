@@ -32,6 +32,7 @@ i/ *   O   O   * \i
 | [Day 9](https://adventofcode.com/2022/day/9)   | ⭐     | ⭐     |
 | [Day 10](https://adventofcode.com/2022/day/10) | ⭐     | ⭐     |
 | [Day 11](https://adventofcode.com/2022/day/11) | ⭐     | ⭐     |
+| [Day 12](https://adventofcode.com/2022/day/12) | ⭐     | ⭐     |
 
 ### Implemented in Rust (_I'm a Rust beginner_).
 <p align="center">
