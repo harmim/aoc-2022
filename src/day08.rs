@@ -20,7 +20,7 @@ impl FromInput for Day08 {
 
 impl DaySolution for Day08 {
     fn part_one(&self) -> String {
-        let mut grid: Vec<Vec<(isize, isize, isize, isize, isize)>> = self
+        let mut grid: Vec<Vec<_>> = self
             .0
             .iter()
             .map(|row| row.iter().map(|&h| (h as isize, -1, -1, -1, -1)).collect())

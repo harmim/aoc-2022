@@ -37,7 +37,7 @@ impl DaySolution for Day03 {
                 *bag1
                     .intersection(&bag2)
                     .cloned()
-                    .collect::<HashSet<char>>()
+                    .collect::<HashSet<_>>()
                     .intersection(&bag3)
                     .next()
                     .unwrap()

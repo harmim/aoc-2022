@@ -23,7 +23,7 @@ impl DaySolution for Day06 {
 impl Day06 {
     fn find_marker_pos<'d>(&'d self, len: usize) -> String {
         for i in len - 1..self.0.len() {
-            if HashSet::<char>::from_iter(self.0[i + 1 - len..i + 1].to_vec()).len() == len {
+            if HashSet::<_>::from_iter(self.0[i + 1 - len..i + 1].to_vec()).len() == len {
                 return (i + 1).to_string();
             }
         }

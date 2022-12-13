@@ -60,7 +60,7 @@ use crate::{DaySolution, FromInput};
 pub struct Day$DAY_FILE;
 
 impl FromInput for Day$DAY_FILE {
-    fn from_lines(_lines: impl Iterator<Item = String>) -> Self {
+    fn from_lines(lines: impl Iterator<Item = String>) -> Self {
         Self
     }
 }

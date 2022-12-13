@@ -89,7 +89,7 @@ impl DaySolution for Day05 {
     fn part_two(&self) -> String {
         let mut stacks = self.0 .0.clone();
         for (q, from, to) in &self.0 .1 {
-            let mut xs: Vec<char> = stacks[*from].drain(0..*q).collect();
+            let mut xs: Vec<_> = stacks[*from].drain(0..*q).collect();
             xs.append(&mut stacks[*to]);
 
             stacks[*to] = xs

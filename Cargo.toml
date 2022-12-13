@@ -10,4 +10,5 @@ license = "MIT"
 keywords = ["rust", "advent-of-code", "puzzle", "christmas", "advent-of-code-2022"]
 
 [dependencies]
+num-integer = "~0.1"
 regex = "~1"

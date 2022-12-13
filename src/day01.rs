@@ -44,7 +44,7 @@ impl DaySolution for Day01 {
     }
 
     fn part_two(&self) -> String {
-        let mut sums: Vec<usize> = self
+        let mut sums: Vec<_> = self
             .0
             .iter()
             .map(|single_elf| single_elf.iter().sum())
