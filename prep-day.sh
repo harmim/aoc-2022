@@ -39,18 +39,26 @@ INPUT_FILE="$INPUT_DIR/$DAY_FILE.txt"
 if [ -f "$INPUT_FILE" ]; then
   echo "Input data already exists for day $DAY, skipping download..."
 else
-  echo "Downloading input data for day $DAY to $INPUT_FILE..."
+  echo "Downloading input data for day $DAY to '$INPUT_FILE'..."
   mkdir -p "$INPUT_DIR"
   curl "https://adventofcode.com/$YEAR/day/$DAY/input" -s -m 10 \
     -b "session=$SESSION" > "$INPUT_FILE"
 fi
 
+INPUT_TEST_FILE="$INPUT_DIR/$DAY_FILE-test.txt"
+if [ -f "$INPUT_TEST_FILE" ]; then
+  echo "An input test file already exists for day $DAY, skipping..."
+else
+  echo "Creating an empty input test file '$INPUT_TEST_FILE' for day $DAY..."
+  touch "$INPUT_TEST_FILE"
+fi
+
 SRC_FILE="$SRC_DIR/day$DAY_FILE.rs"
 if [ -f "$SRC_FILE" ]; then
-  echo "$SRC_FILE already exists, skipping..."
+  echo "'$SRC_FILE' already exists, skipping..."
 else
-  echo "Creating a boilerplate module for day $DAY at $SRC_FILE..."
-  echo "Remember to update $SRC_DIR/main.rs:"
+  echo "Creating a boilerplate module for day $DAY at '$SRC_FILE'..."
+  echo "Remember to update '$SRC_DIR/main.rs':"
   echo "  - Add 'mod day$DAY_FILE;'."
   echo "  - Add 'use day$DAY_FILE::Day$DAY_FILE;'."
   echo "  - Update 'get_day_solution' to use 'Day$DAY_FILE'."
@@ -67,11 +75,11 @@ impl FromInput for Day$DAY_FILE {
 
 impl DaySolution for Day$DAY_FILE {
     fn part_one(&self) -> String {
-        String::from("")
+        String::new()
     }
 
     fn part_two(&self) -> String {
-        String::from("")
+        String::new()
     }
 }
 EOF

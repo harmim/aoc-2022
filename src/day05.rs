@@ -2,7 +2,7 @@ use regex::Regex;
 
 use crate::{DaySolution, FromInput};
 
-pub struct Day05((Vec<Vec<char>>, Vec<(usize, usize, usize)>));
+pub struct Day05(Vec<Vec<char>>, Vec<(usize, usize, usize)>);
 
 impl FromInput for Day05 {
     fn from_lines(lines: impl Iterator<Item = String>) -> Self {
@@ -69,14 +69,14 @@ impl FromInput for Day05 {
             }
         }
 
-        Self((stacks, proc))
+        Self(stacks, proc)
     }
 }
 
 impl DaySolution for Day05 {
     fn part_one(&self) -> String {
-        let mut stacks = self.0 .0.clone();
-        for (q, from, to) in &self.0 .1 {
+        let mut stacks = self.0.clone();
+        for (q, from, to) in &self.1 {
             for _ in 0..*q {
                 let x = stacks[*from].remove(0);
                 stacks[*to].insert(0, x);
@@ -87,9 +87,9 @@ impl DaySolution for Day05 {
     }
 
     fn part_two(&self) -> String {
-        let mut stacks = self.0 .0.clone();
-        for (q, from, to) in &self.0 .1 {
-            let mut xs: Vec<_> = stacks[*from].drain(0..*q).collect();
+        let mut stacks = self.0.clone();
+        for (q, from, to) in &self.1 {
+            let mut xs: Vec<_> = stacks[*from].drain(..*q).collect();
             xs.append(&mut stacks[*to]);
 
             stacks[*to] = xs

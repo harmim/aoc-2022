@@ -19,14 +19,16 @@ impl FromInput for Day12 {
             let mut row = vec![];
 
             for (y, c) in line.chars().enumerate() {
-                if c == 'S' {
-                    start = (x, y);
-                    row.push('a');
-                } else if c == 'E' {
-                    end = (x, y);
-                    row.push('z');
-                } else {
-                    row.push(c);
+                match c {
+                    'S' => {
+                        start = (x, y);
+                        row.push('a');
+                    }
+                    'E' => {
+                        end = (x, y);
+                        row.push('z');
+                    }
+                    _ => row.push(c),
                 }
             }
 
