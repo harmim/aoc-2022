@@ -10,5 +10,7 @@ license = "MIT"
 keywords = ["rust", "advent-of-code", "puzzle", "christmas", "advent-of-code-2022"]
 
 [dependencies]
+gcollections = "~1"
+intervallum = "~1"
 num-integer = "~0.1"
 regex = "~1"

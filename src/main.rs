@@ -16,6 +16,7 @@ mod day11;
 mod day12;
 mod day13;
 mod day14;
+mod day15;
 
 use day01::Day01;
 use day02::Day02;
@@ -31,6 +32,7 @@ use day11::Day11;
 use day12::Day12;
 use day13::Day13;
 use day14::Day14;
+use day15::Day15;
 
 const INPUT_DIR: &str = "input";
 
@@ -81,6 +83,7 @@ fn get_day_solution(day: usize, lines: impl Iterator<Item = String>) -> Box<dyn 
         12 => Box::new(Day12::from_lines(lines)),
         13 => Box::new(Day13::from_lines(lines)),
         14 => Box::new(Day14::from_lines(lines)),
+        15 => Box::new(Day15::from_lines(lines)),
         _ => panic!("Day has not been solved yet, or it is invalid."),
     }
 }

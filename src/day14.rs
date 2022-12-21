@@ -48,10 +48,9 @@ impl DaySolution for Day14 {
         let mut max_ys = HashMap::new();
 
         for (x, y) in self.0.iter() {
-            if max_ys.contains_key(x) {
-                *max_ys.get_mut(x).unwrap() = cmp::max(*y, max_ys[x]);
-            } else {
-                max_ys.insert(*x, *y);
+            match max_ys.get_mut(x) {
+                Some(max_y) => *max_y = cmp::max(*y, *max_y),
+                None => drop(max_ys.insert(*x, *y)),
             }
         }
 
